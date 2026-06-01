@@ -334,10 +334,9 @@ botonEnviar.addEventListener("click", function(){
         }
     })
 })
-
+renderSueldos()
 renderMovimientos(movimientosArray)
 renderCierreEfectivo()
 renderCierreTransferencia()
 renderIngresos()
-renderSueldos()
 cierreTarjetas()
