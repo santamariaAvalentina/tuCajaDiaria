@@ -99,7 +99,6 @@ agregar.addEventListener("click",function() {
         style: {
           background: "#28A745",
         },
-        onClick: function(){} 
       }).showToast();
     descripcion.value = ""
     monto.value = ""
@@ -158,7 +157,6 @@ function renderMovimientos(array){
                 style: {
                   background: "#f03a17",
                 },
-                onClick: function(){} // Callback after click
               }).showToast();
            
         })
@@ -321,7 +319,8 @@ botonEnviar.addEventListener("click", function(){
             localStorage.removeItem("movimientos")
             localStorage.removeItem("cajaInTransf")
             localStorage.removeItem("cajaEfectivo")
-            location.reload()
+            cajaInEfectivo.value = ""
+            cajaInTransferencia.value = ""
 
             movimientosArray = []
 
