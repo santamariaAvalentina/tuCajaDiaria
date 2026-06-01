@@ -97,7 +97,7 @@ agregar.addEventListener("click",function() {
         gravity: "bottom", 
         position: "center",
         style: {
-          background: "#f03a17",
+          background: "#28A745",
         },
         onClick: function(){} 
       }).showToast();
@@ -302,13 +302,13 @@ botonEnviar.addEventListener("click", function(){
             let totalSueldos = renderSueldos()
 
             let mensaje = `Cierre de caja del Dia: ${hoy.toLocaleDateString()}
-                           Ventas en efectivo: $${ventasEfectivo}
-                           Gastos en efectivo: $${gastosEfectivo}
-                           Ventas transferencia: $${ventasTransferencia}
-                           Gastos transferencia: $${gastosTransferencia}
-                           Ventas con Tarjeta/QR: $${totalTarjetas}
-                           Ingresos a la caja: $${totalIngresos}
-                           Sueldos: $${totalSueldos}`
+            Gastos en efectivo: $${gastosEfectivo}
+            Gastos transferencia: $${gastosTransferencia}
+            Ventas con Tarjeta/QR: $${totalTarjetas}
+            Ingresos a la caja: $${totalIngresos}
+            Sueldos: $${totalSueldos}
+            Ventas en efectivo: $${ventasEfectivo}
+            Ventas transferencia: $${ventasTransferencia}`
 
             window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`)
 
