@@ -189,7 +189,7 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr auto 1fr auto;
   align-items:center;
-  color : var(--text);
+  color : var(--texto);
   font-family:Georgia, 'Times New Roman', Times, serif;
   gap: 5px;
   border-bottom: 1px solid var(--borde);
