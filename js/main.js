@@ -105,8 +105,6 @@ agregar.addEventListener("click",function() {
     monto.value = ""
     tipoMovimiento.value = ""
     tipoMetodo.value = ""
-
-    
 })
 let listaMovimientos = document.getElementById("listaMovimientos")
 
@@ -197,7 +195,7 @@ function renderSueldos(){
 }
 let cierreEfectivo = document.getElementById("cierreEfectivo")
 function renderCierreEfectivo(){
-    let cajaInicial = parseFloat(localStorage.getItem("cajaInEfectivo")) || 0
+    let cajaInicial = parseFloat(localStorage.getItem("cajaEfectivo")) || 0
     
     let ventasEfectivo = movimientosArray
         .filter(m => m.metodoPago === "Efectivo" && m.tipoMovimiento === "Venta")
@@ -206,13 +204,17 @@ function renderCierreEfectivo(){
     let gastosEfectivo = movimientosArray
         .filter(m => m.metodoPago === "Efectivo" && (m.tipoMovimiento === "Gasto" || m.tipoMovimiento === "Sueldo"))
         .reduce((acum, m) => acum + parseFloat(m.monto), 0)
+    let ingresosEfectivo = movimientosArray
+        .filter(m => m.tipoMovimiento === "Ingreso" &&  m.metodoPago === "Efectivo" )
+        .reduce((acum, m) => acum + parseFloat(m.monto), 0)
     
-    let cajaFinalEfect = cajaInicial + ventasEfectivo - gastosEfectivo
+    let cajaFinalEfect = cajaInicial + ventasEfectivo - gastosEfectivo + ingresosEfectivo
 
     let resumenEfectivo = document.getElementById("resumenEfectivo")
     resumenEfectivo.innerHTML = `<div class="ventasFinales">
                                     <h3>Caja inicial: $${cajaInicial}</h3>
-                                    <h3>Ingresos: + $${ventasEfectivo}</h3>
+                                    <h3>Ingresos: + $${ingresosEfectivo}</h3>
+                                    <h3>Ventas: + $${ventasEfectivo}</h3>
                                     <h3>Gastos: - $${gastosEfectivo}</h3>
                                     <p>--------------------------</p>
                                     <h3>Caja final: $${cajaFinalEfect}</h3>
@@ -230,13 +232,17 @@ function renderCierreTransferencia(){
     let gastosTransf = movimientosArray
         .filter(m => m.metodoPago === "Transferencia" && (m.tipoMovimiento === "Gasto" || m.tipoMovimiento === "Sueldo"))
         .reduce((acum, m) => acum + parseFloat(m.monto), 0)
+    let ingresosTransf =movimientosArray
+        .filter(m => m.tipoMovimiento === "Ingreso" && m.metodoPago === "Transferencia" )
+        .reduce((acum, m) => acum + parseFloat(m.monto), 0)
     
     let cajaFinalTransf = cajaInicial + ventasTransf - gastosTransf
 
     let resumenTransf = document.getElementById("resumenTransferencia")
     resumenTransf.innerHTML = `<div class="ventasFinales">
                                  <h3>Caja inicial: $${cajaInicial}</h3>
-                                 <h3>Ingresos: + $${ventasTransf}</h3>
+                                 <h3>Ingresos: + $${ingresosTransf}</h3>
+                                 <h3>Ventas: + $${ventasTransf}</h3>
                                  <h3>Gastos: - $${gastosTransf}</h3>
                                  <p>-------------------------</p>
                                  <h3>Caja final: $${cajaFinalTransf}</h3>
