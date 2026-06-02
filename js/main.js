@@ -163,7 +163,7 @@ function renderMovimientos(array){
         
     })
 }
-let cierreIngresos = document.getElementById ("cierreIngresos")
+
 function renderIngresos(){
     let ingresosEfectivo = movimientosArray
         .filter(m => m.tipoMovimiento === "Ingreso" &&  m.metodoPago === "Efectivo" )
@@ -180,7 +180,6 @@ function renderIngresos(){
         return ingresosEfectivo + ingresosTransf
 }
 
-let sueldoFinal = document.getElementById("sueldos")
 function renderSueldos(){
     let sueldo =movimientosArray
     .filter(m => m.tipoMovimiento === "Sueldo" &&  (m.metodoPago === "Efectivo" || m.metodoPago === "Transferencia") )
@@ -191,7 +190,7 @@ function renderSueldos(){
     
     return sueldo 
 }
-let cierreEfectivo = document.getElementById("cierreEfectivo")
+
 function renderCierreEfectivo(){
     let cajaInicial = parseFloat(localStorage.getItem("cajaEfectivo")) || 0
     
@@ -219,7 +218,7 @@ function renderCierreEfectivo(){
                                 </div>`
     return cajaFinalEfect
 }
-let cierreTransferencia = document.getElementById ("cierreTransferencia")
+
 function renderCierreTransferencia(){
     let cajaInicial = parseFloat(localStorage.getItem("cajaInTransf")) || 0
     
@@ -248,7 +247,7 @@ function renderCierreTransferencia(){
     return cajaFinalTransf
     
 }
-let cierreTarjeta = document.getElementById("cierreTarjeta")
+
 function cierreTarjetas() {
     let ventasDebito = movimientosArray
         .filter (m => m.metodoPago === "Debito" )
