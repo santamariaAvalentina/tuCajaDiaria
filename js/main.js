@@ -234,7 +234,7 @@ function renderCierreTransferencia(){
         .filter(m => m.tipoMovimiento === "Ingreso" && m.metodoPago === "Transferencia" )
         .reduce((acum, m) => acum + parseFloat(m.monto), 0)
     
-    let cajaFinalTransf = cajaInicial + ventasTransf - gastosTransf
+    let cajaFinalTransf = cajaInicial + ventasTransf - gastosTransf + ingresosTransf
 
     let resumenTransf = document.getElementById("resumenTransferencia")
     resumenTransf.innerHTML = `<div class="ventasFinales">
@@ -306,11 +306,11 @@ botonEnviar.addEventListener("click", function(){
             let totalSueldos = renderSueldos()
 
             let mensaje = `Cierre de caja del Dia: ${hoy.toLocaleDateString()}
+            Ingresos a la caja: $${totalIngresos}
             Gastos en efectivo: $${gastosEfectivo}
             Gastos transferencia: $${gastosTransferencia}
-            Ventas con Tarjeta/QR: $${totalTarjetas}
-            Ingresos a la caja: $${totalIngresos}
             Sueldos: $${totalSueldos}
+            Ventas con Tarjeta/QR: $${totalTarjetas}
             Ventas en efectivo: $${ventasEfectivo}
             Ventas transferencia: $${ventasTransferencia}`
 
