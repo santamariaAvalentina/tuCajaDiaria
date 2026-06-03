@@ -332,7 +332,7 @@ botonEnviar.addEventListener("click", function(){
 
             Swal.fire({
                 title: "Caja cerrada",
-                text: "El cierre fue realizaco con exito",
+                text: "El cierre fue realizado con exito",
                 icon: "success"
               })
         }
