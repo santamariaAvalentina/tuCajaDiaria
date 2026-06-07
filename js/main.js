@@ -135,8 +135,9 @@ function renderMovimientos(array){
                                     <h3 class=" descripcion"> ${movimiento.metodoPago}</h3>
                                     <h3 class=" ${color} "> ${signo} $${movimiento.monto}</h3>
                                     <h3 class=" hora">${movimiento.hora}</h3> 
-                                    <button class=btnEliminar id="btn-eliminar-${index}">❌</button>  
+                                    <button class="btnEliminar" id="btn-eliminar-${index}">❌</button> 
                                 </div>`
+                                
 
         listaMovimientos.appendChild(itemMovim)
         const btnEliminar =document.getElementById(`btn-eliminar-${index}`)
@@ -162,6 +163,10 @@ function renderMovimientos(array){
         })
         
     })
+    let divVerMas = document.createElement("div")
+    divVerMas.className = "verMas"
+    divVerMas.innerHTML+= `<a href="./pages/movimientos.html"><button>Ver Todos los Movimeintos</button></a>`
+    listaMovimientos.appendChild(divVerMas)
 }
 
 function renderIngresos(){
@@ -303,6 +308,7 @@ botonEnviar.addEventListener("click", function(){
             let totalTarjetas = cierreTarjetas()
             let totalIngresos = renderIngresos()
             let totalSueldos = renderSueldos()
+            let ventasTotales = ventasEfectivo + ventasTransferencia + cierreTarjetas()
 
             let mensaje = `Cierre de caja del Dia: ${hoy.toLocaleDateString()}
             Ingresos a la caja: $${totalIngresos}
@@ -311,7 +317,8 @@ botonEnviar.addEventListener("click", function(){
             Sueldos: $${totalSueldos}
             Ventas con Tarjeta/QR: $${totalTarjetas}
             Ventas en efectivo: $${ventasEfectivo}
-            Ventas transferencia: $${ventasTransferencia}`
+            Ventas transferencia: $${ventasTransferencia}
+            Ventas totales : $${ventasTotales}`
 
             window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`)
 
